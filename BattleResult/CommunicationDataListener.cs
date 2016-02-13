@@ -9,6 +9,10 @@ using System.Reactive.Linq;
 
 namespace BattleResult
 {
+    /// <summary>
+    /// 通信データリスナ.
+    /// KanColleViewer本体のProxyから通知を受信し、必要なデータを取り出す.
+    /// </summary>
     public class CommunicationDataListener
     {
         private static CommunicationDataListener sInstance;
@@ -47,9 +51,6 @@ namespace BattleResult
         // インスタンス取得.
         public static CommunicationDataListener getInstance()
         {
-#if DEBUG
-            Trace.WriteLine("getInstance", "XXXXX TEST XXXXX");
-#endif
             if (sInstance == null)
             {
                 sInstance = new CommunicationDataListener();

@@ -1,11 +1,7 @@
 ﻿using Grabacr07.KanColleViewer.Composition;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BattleResult
 {
@@ -24,9 +20,11 @@ namespace BattleResult
 #if DEBUG
             Trace.WriteLine("Plugin Initialize", "XXXXX TEST XXXXX");
 #endif
+            vm = new BattleResultViewModel();
         }
+        private BattleResultViewModel vm;
         public string Name => "BattleResult";
-        public object View => new BattleResultView();
+        public object View => new BattleResultView() { DataContext = this.vm, };
         public event EventHandler<NotifyEventArgs> NotifyRequested;
     }
 }
