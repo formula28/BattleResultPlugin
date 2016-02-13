@@ -7,12 +7,14 @@
              xmlns:kanColleWrapper="clr-namespace:Grabacr07.KanColleWrapper;assembly=KanColleWrapper"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+				  VerticalScrollBarVisibility="Auto"
+				  PanningMode="Both">
         <StackPanel VerticalAlignment="Top">
             <TextBlock x:Name="BattleResultRankLabel" TextWrapping="Wrap" Text="戦果ランク別戦闘数："/>
             <TextBlock x:Name="BattleResultRank" TextWrapping="Wrap" Text=""/>
             <TextBlock x:Name="BattleResultGridLabel" TextWrapping="Wrap" Text="戦闘結果：" Margin="0,10,0,0"/>
             <DataGrid x:Name="BattleResultGrid" HorizontalAlignment="Left" />
         </StackPanel>
-    </Grid>
+    </ScrollViewer>
 </UserControl>
