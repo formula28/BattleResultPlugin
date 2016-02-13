@@ -39,11 +39,15 @@ namespace BattleResult
                 CommunicationDataListener.getInstance().addBattleResultDataChangeListener(this);
                 // 戦果ランク別戦闘数表示.
                 InitializeBattleResultCount(BattleResultDataList);
+#if DEBUG
                 Trace.WriteLine("set ItemSource", "XXXXX TEST XXXXX");
+#endif
             }
             catch (Exception e)
             {
+#if DEBUG
                 Trace.WriteLine("set ItemSource Error" + e.ToString(), "XXXXX TEST XXXXX");
+#endif
             }
         }
 
@@ -76,13 +80,17 @@ namespace BattleResult
         public void Dispose()
         {
             CommunicationDataListener.getInstance().removeBattleResultDataChangeListener(this);
+#if DEBUG
             Trace.WriteLine("Dispose", "XXXXX TEST XXXXX");
+#endif
         }
 
         // 戦闘結果追加通知時処理.
         public void onBattleResultDataAdded(BattleResultData brd)
         {
+#if DEBUG
             Trace.WriteLine("onBattleResultDataAdded", "XXXXX TEST XXXXX");
+#endif
             //BattleResultDataList.Add(brd);
         }
     }

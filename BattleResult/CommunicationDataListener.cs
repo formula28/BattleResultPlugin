@@ -40,12 +40,16 @@ namespace BattleResult
             //進撃.
             proxy.ApiSessionSource.Where(x => x.Request.PathAndQuery == "/kcsapi/api_req_map/next")
                 .TryParse<map_start_next>().Subscribe(x => this.Update(x.Data));
+#if DEBUG
             Trace.WriteLine("Constractor set Listener", "XXXXX TEST XXXXX");
+#endif
         }
         // インスタンス取得.
         public static CommunicationDataListener getInstance()
         {
+#if DEBUG
             Trace.WriteLine("getInstance", "XXXXX TEST XXXXX");
+#endif
             if (sInstance == null)
             {
                 sInstance = new CommunicationDataListener();
@@ -60,7 +64,9 @@ namespace BattleResult
         // 情報更新(通常戦闘結果).
         public void Update(kcsapi_battleresult result)
         {
+#if DEBUG
             Trace.WriteLine(string.Format("Update {0} {1}", result.api_quest_name, result.api_get_ship == null ? "null" : result.api_get_ship.api_ship_name), "XXXXX TEST XXXXX");
+#endif
             BattleResultData brd = new BattleResultData();
             brd.ResultDateTime = DateTime.Now;
             brd.MapAreaName = this.mapAreaName;
@@ -86,7 +92,9 @@ namespace BattleResult
         // 情報更新(連合艦隊戦闘結果).
         public void Update(kcsapi_combined_battle_battleresult result)
         {
+#if DEBUG
             Trace.WriteLine(string.Format("Update {0} {1}", result.api_quest_name, result.api_get_ship == null ? "null" : result.api_get_ship.api_ship_name), "XXXXX TEST XXXXX");
+#endif
             BattleResultData brd = new BattleResultData();
             brd.ResultDateTime = DateTime.Now;
             brd.MapAreaName = this.mapAreaName;
@@ -112,12 +120,13 @@ namespace BattleResult
         // 情報更新(出撃/進撃).
         public void Update(map_start_next result)
         {
+#if DEBUG
             Trace.WriteLine("Update map_start_next", "XXXXX TEST XXXXX");
             Trace.WriteLine(string.Format("api_maparea_id = {0}", result.api_maparea_id), "XXXXX TEST XXXXX");
             Trace.WriteLine(string.Format("api_mapinfo_no = {0}", result.api_mapinfo_no), "XXXXX TEST XXXXX");
             Trace.WriteLine(string.Format("api_no = {0}", result.api_no), "XXXXX TEST XXXXX");
             Trace.WriteLine(string.Format("api_next = {0}", result.api_next), "XXXXX TEST XXXXX");
-
+#endif
             foreach (MapInfo info in KanColleClient.Current.Master.MapInfos.Values)
             {
                 if (info.MapAreaId == result.api_maparea_id
@@ -133,7 +142,9 @@ namespace BattleResult
         // 戦闘結果追加通知.
         private void onBattleResultDataAdded(BattleResultData brd)
         {
+#if DEBUG
             Trace.WriteLine("onBattleResultDataAdded", "XXXXX TEST XXXXX");
+#endif
             foreach (IBattleResultDataChangeListener listener in dataChangeListeners)
             {
                 if (listener != null)
@@ -146,13 +157,17 @@ namespace BattleResult
         public void addBattleResultDataChangeListener(IBattleResultDataChangeListener listener)
         {
             dataChangeListeners.Add(listener);
+#if DEBUG
             Trace.WriteLine("addBattleResultDataChangeListener", "XXXXX TEST XXXXX");
+#endif
         }
         // 通知設定解除.
         public void removeBattleResultDataChangeListener(IBattleResultDataChangeListener listener)
         {
             dataChangeListeners.Remove(listener);
+#if DEBUG
             Trace.WriteLine("removeBattleResultDataChangeListener", "XXXXX TEST XXXXX");
+#endif
         }
     }
 }

@@ -21,7 +21,9 @@ namespace BattleResult
     {
         public void Initialize()
         {
+#if DEBUG
             Trace.WriteLine("Plugin Initialize", "XXXXX TEST XXXXX");
+#endif
         }
         public string Name => "BattleResult";
         public object View => new BattleResultView();
