@@ -18,18 +18,21 @@
             </StackPanel>
         </StackPanel>
         <DataGrid x:Name="BattleResultGrid"
-            HorizontalAlignment="Left"
-            ItemsSource="{Binding BattleResultDataList}"
-            HeadersVisibility="Column"
-            AutoGenerateColumns="False"
-            AlternatingRowBackground="#FF7F7F7F"
-            SelectionUnit="CellOrRowHeader"
-            ForceCursor="True"
-            Foreground="White"
-            Background="#00000000"
-            RowBackground="#FF3F3F3F"
-            AreRowDetailsFrozen="True" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
-            >
+                  HorizontalAlignment="Left"
+                  ItemsSource="{Binding BattleResultDataList}"
+                  HeadersVisibility="Column"
+                  AutoGenerateColumns="False"
+                  AlternatingRowBackground="#FF7F7F7F"
+                  SelectionUnit="CellOrRowHeader"
+                  ForceCursor="True"
+                  Foreground="White"
+                  Background="{x:Null}"
+                  RowBackground="#FF3F3F3F"
+                  AreRowDetailsFrozen="True"
+                  HorizontalContentAlignment="Stretch"
+                  VerticalContentAlignment="Stretch"
+                  BorderBrush="{x:Null}"
+                  >
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="DataGridColumnHeader">
                     <Setter Property="Foreground" Value="#000000" />
