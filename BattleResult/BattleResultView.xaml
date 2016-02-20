@@ -7,15 +7,43 @@
              xmlns:kanColleWrapper="clr-namespace:Grabacr07.KanColleWrapper;assembly=KanColleWrapper"
              mc:Ignorable="d" 
 			 d:DataContext="{d:DesignInstance local:BattleResultViewModel}"
-             d:DesignHeight="300" d:DesignWidth="300">
-    <ScrollViewer HorizontalScrollBarVisibility="Disabled"
-				  VerticalScrollBarVisibility="Auto"
-				  PanningMode="Both">
-        <StackPanel VerticalAlignment="Top">
+             d:DesignHeight="222.223" d:DesignWidth="725.277">
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top">
             <TextBlock x:Name="BattleResultRankLabel" TextWrapping="Wrap" Text="戦果ランク別戦闘数："/>
             <TextBlock x:Name="BattleResultRank" TextWrapping="Wrap" Text="{Binding BattleResultCountText}"/>
-            <TextBlock x:Name="BattleResultGridLabel" TextWrapping="Wrap" Text="戦闘結果：" Margin="0,10,0,0"/>
-            <DataGrid x:Name="BattleResultGrid" HorizontalAlignment="Left" ItemsSource="{Binding BattleResultDataList}"/>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,5" VerticalAlignment="Top">
+                <TextBlock x:Name="BattleResultGridLabel" TextWrapping="Wrap" Text="戦闘結果：" Margin="0"/>
+                <Button ToolTip="表示データをリセットします。" Margin="30,0,0,0" Click="onResetButtonClick">reset</Button>
+            </StackPanel>
         </StackPanel>
-    </ScrollViewer>
+        <DataGrid x:Name="BattleResultGrid"
+            HorizontalAlignment="Left"
+            ItemsSource="{Binding BattleResultDataList}"
+            HeadersVisibility="Column"
+            AutoGenerateColumns="False"
+            AlternatingRowBackground="#FF7F7F7F"
+            SelectionUnit="CellOrRowHeader"
+            ForceCursor="True"
+            Foreground="White"
+            Background="#00000000"
+            RowBackground="#FF3F3F3F"
+            AreRowDetailsFrozen="True" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+            >
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Foreground" Value="#000000" />
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="戦闘日時" Width="Auto" Binding="{Binding ResultDateTime, StringFormat=yyyy/MM/dd hh:mm:ss}"/>
+                <DataGridTextColumn Header="海域" Width="Auto" Binding="{Binding MapAreaName}"/>
+                <DataGridTextColumn Header="マップ" Width="Auto" Binding="{Binding MapInfoName}"/>
+                <DataGridTextColumn Header="セル" Width="Auto" Binding="{Binding MapCell}"/>
+                <DataGridTextColumn Header="敵艦隊名" Width="Auto" Binding="{Binding EnemyDeckName}"/>
+                <DataGridTextColumn Header="戦果ランク" Width="Auto" Binding="{Binding WinRank}"/>
+                <DataGridTextColumn Header="ドロップ" Width="Auto" Binding="{Binding GetShipName}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
 </UserControl>

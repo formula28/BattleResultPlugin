@@ -55,12 +55,18 @@ namespace BattleResult
             initializeViewData();
             CommunicationDataListener.getInstance().addBattleResultDataChangeListener(this);
         }
-        
+
         // 表示データ初期化.
         private void initializeViewData()
         {
             // 戦闘結果リスト.
-            BattleResultDataList = CommunicationDataListener.getInstance().getDataList();
+            setViewData(CommunicationDataListener.getInstance().getDataList());
+        }
+        // 戦闘結果データ設定.
+        private void setViewData(ObservableCollection<BattleResultData> aBattleResultDataList)
+        {
+            // 戦闘結果リスト.
+            BattleResultDataList = aBattleResultDataList;
             // 戦果ランク別戦闘数.
             BattleResultCount = new Dictionary<string, int>();
             BattleResultCount["S"] = 0;
@@ -116,6 +122,15 @@ namespace BattleResult
             {
                 dispatcher.Invoke(() => addViewData(brd));
             }
+        }
+        // 戦闘結果リセット通知.
+        public void onBattleResultDataReset()
+        {
+#if DEBUG
+            Trace.WriteLine("onBattleResultDataReset", "XXXXX TEST XXXXX");
+#endif
+            this.BattleResultDataList.Clear();
+            setViewData(new ObservableCollection<BattleResultData>());
         }
     }
 }

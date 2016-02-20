@@ -12,5 +12,10 @@ namespace BattleResult
         {
             InitializeComponent();
         }
+        //リセットボタンコールバック.
+        private void onResetButtonClick(object sender, System.Windows.RoutedEventArgs e)
+        {
+            ((BattleResultViewModel)this.DataContext).onBattleResultDataReset();
+        }
     }
 }
