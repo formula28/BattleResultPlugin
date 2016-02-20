@@ -18,10 +18,11 @@ namespace BattleResult
         public void Initialize()
         {
 #if DEBUG
-            Trace.WriteLine("Plugin Initialize", "XXXXX TEST XXXXX");
+            Trace.WriteLine("Plugin Initialize", Plugin.LOGTAG);
 #endif
             vm = new BattleResultViewModel();
         }
+        public static String LOGTAG = "XXXXX BattleResultPlugin XXXXX";
         private BattleResultViewModel vm;
         public string Name => "BattleResult";
         public object View => new BattleResultView() { DataContext = this.vm, };

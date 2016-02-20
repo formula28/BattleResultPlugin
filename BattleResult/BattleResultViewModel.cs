@@ -50,7 +50,7 @@ namespace BattleResult
         public BattleResultViewModel()
         {
 #if DEBUG
-            Trace.WriteLine("BattleResultViewModel", "XXXXX TEST XXXXX");
+            Trace.WriteLine("BattleResultViewModel", Plugin.LOGTAG);
 #endif
             initializeViewData();
             CommunicationDataListener.getInstance().addBattleResultDataChangeListener(this);
@@ -111,7 +111,7 @@ namespace BattleResult
         public void onBattleResultDataAdded(BattleResultData brd)
         {
 #if DEBUG
-            Trace.WriteLine("onBattleResultDataAdded", "XXXXX TEST XXXXX");
+            Trace.WriteLine("onBattleResultDataAdded", Plugin.LOGTAG);
 #endif
             var dispatcher = System.Windows.Application.Current.Dispatcher;
             if (dispatcher.CheckAccess())
@@ -127,7 +127,7 @@ namespace BattleResult
         public void onBattleResultDataReset()
         {
 #if DEBUG
-            Trace.WriteLine("onBattleResultDataReset", "XXXXX TEST XXXXX");
+            Trace.WriteLine("onBattleResultDataReset", Plugin.LOGTAG);
 #endif
             this.BattleResultDataList.Clear();
             setViewData(new ObservableCollection<BattleResultData>());
