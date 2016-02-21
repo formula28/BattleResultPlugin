@@ -39,7 +39,7 @@
                 </Style>
             </DataGrid.ColumnHeaderStyle>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="戦闘日時" Width="Auto" Binding="{Binding ResultDateTime, StringFormat=yyyy/MM/dd hh:mm:ss}"/>
+                <DataGridTextColumn Header="戦闘日時" Width="Auto" Binding="{Binding ResultDateTime, StringFormat=yyyy/MM/dd(ddd) HH:mm:ss}"/>
                 <DataGridTextColumn Header="海域" Width="Auto" Binding="{Binding MapAreaName}"/>
                 <DataGridTextColumn Header="マップ" Width="Auto" Binding="{Binding MapInfoName}"/>
                 <DataGridTextColumn Header="セル" Width="Auto" Binding="{Binding MapCell}"/>
